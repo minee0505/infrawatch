@@ -44,6 +44,11 @@ public class SecurityConfig {
                         .securityContextRepository(new RequestAttributeSecurityContextRepository()))
 
                 .authorizeHttpRequests(auth -> auth
+                        // 루트("/")는 업타임 모니터링 도구가 HEAD 로 핑을 보내는 경우가 많아 GET 과 함께 명시적으로 허용한다.
+                        // 인증이 필요한 API 경로까지 HEAD 를 열어주면 인증 우회가 되므로 공개 경로에만 한정한다.
+                        .requestMatchers(HttpMethod.HEAD, "/", "/index.html", "/assets/**", "/favicon.svg",
+                                "/login", "/dashboard", "/facilities", "/facilities/*",
+                                "/alerts", "/members", "/audit-logs").permitAll()
                         .requestMatchers("/", "/error").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
