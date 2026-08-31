@@ -1,0 +1,122 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.createButton {
+  @include m.button-base;
+
+  background: v.$color-primary;
+  color: #fff;
+
+  &:hover {
+    background: v.$color-primary-dark;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: v.$space-md;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  @include m.card;
+
+  display: flex;
+  flex-direction: column;
+  padding: v.$space-md;
+  color: inherit;
+  gap: v.$space-sm;
+
+  &:hover {
+    border-color: v.$color-primary;
+    text-decoration: none;
+  }
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-sm;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.type {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: v.$color-primary-light;
+  color: v.$color-primary-dark;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.location {
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: v.$space-sm;
+  border-top: 1px solid v.$color-border;
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.alertBadge {
+  color: v.$color-critical;
+  font-weight: 700;
+}
+
+.noAlert {
+  color: v.$color-ok;
+}
+
+// 등록 폼 (Modal 안에서 사용)
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-md;
+}
+
+.field {
+  @include m.form-field;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input {
+  @include m.form-input;
+}
+
+.textarea {
+  @include m.form-input;
+
+  resize: vertical;
+}
+
+.submit {
+  @include m.button-base;
+
+  background: v.$color-primary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: v.$color-primary-dark;
+  }
+}

@@ -1,0 +1,25 @@
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+.DS_Store
+*.log
+
+out/
+bin/
+
+# 화면 빌드 결과물. 도커 이미지를 만들 때 여기로 복사된다.
+src/main/resources/static/
+
+# JWT 비밀키 등 실제 값이 들어가는 파일
+.env
+*.pem
+
+node_modules/
+frontend/dist/

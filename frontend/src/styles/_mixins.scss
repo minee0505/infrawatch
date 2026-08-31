@@ -1,0 +1,56 @@
+@use 'variables' as v;
+
+@mixin card {
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-card;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-sm;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: v.$radius-sm;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: v.$breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin form-field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-xs;
+}
+
+@mixin form-input {
+  padding: 10px 12px;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-sm;
+  background: v.$color-surface;
+  color: v.$color-text;
+  font-family: inherit;
+  font-size: 15px;
+
+  &:focus {
+    border-color: v.$color-primary;
+    outline: 2px solid v.$color-primary-light;
+  }
+}

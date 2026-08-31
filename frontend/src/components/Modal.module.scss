@@ -1,0 +1,46 @@
+@use '../styles/variables' as v;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  background: rgba(31, 41, 37, 0.45);
+  padding: v.$space-xl v.$space-md;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 440px;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  padding: v.$space-lg;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: v.$space-md;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.close {
+  border: 0;
+  background: none;
+  color: v.$color-text-muted;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    color: v.$color-text;
+  }
+}

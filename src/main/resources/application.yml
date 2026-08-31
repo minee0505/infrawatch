@@ -1,0 +1,57 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: infrawatch
+
+  # JWT 필터로 직접 인증하므로 기본 폼 로그인용 UserDetailsService 자동 설정이 필요 없다.
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+  datasource:
+    # Render 등 관리형 DB는 host/port/name을 따로 내려주므로 URL을 조립한다.
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:infrawatch}
+    username: ${DB_USERNAME:infrawatch}
+    password: ${DB_PASSWORD:infrawatch}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # 스키마는 Flyway 가 관리한다. Hibernate 는 매핑이 맞는지 검증만 한다.
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  jwt:
+    # 운영에서는 반드시 환경변수로 교체한다. HS256 은 최소 32바이트를 요구한다.
+    secret: ${JWT_SECRET:infrawatch-local-development-secret-key-change-me-in-production}
+    validity-seconds: ${JWT_VALIDITY_SECONDS:86400}
+  simulator:
+    # 실제 IoT 장비 없이 데모용 측정값을 생성한다. 배포 환경에서 끌 수 있다.
+    enabled: ${SIMULATOR_ENABLED:true}
+    interval-ms: ${SIMULATOR_INTERVAL_MS:20000}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+logging:
+  level:
+    com.infrawatch: debug

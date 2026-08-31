@@ -1,0 +1,131 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.shell {
+  display: flex;
+  min-height: 100%;
+
+  @include m.mobile {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  display: flex;
+  width: v.$sidebar-width;
+  flex-shrink: 0;
+  flex-direction: column;
+  padding: v.$space-lg v.$space-md;
+  border-right: 1px solid v.$color-border;
+  background: v.$color-surface;
+  gap: v.$space-lg;
+
+  @include m.mobile {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid v.$color-border;
+  }
+}
+
+.brand {
+  padding: 0 v.$space-sm;
+  color: v.$color-primary;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+
+  @include m.mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.link {
+  padding: 10px v.$space-sm;
+  border-radius: v.$radius-sm;
+  color: v.$color-text-muted;
+  font-size: 15px;
+  font-weight: 500;
+
+  &:hover {
+    background: v.$color-primary-light;
+    color: v.$color-text;
+    text-decoration: none;
+  }
+}
+
+.active {
+  background: v.$color-primary-light;
+  color: v.$color-primary-dark;
+  font-weight: 700;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  padding-top: v.$space-md;
+  border-top: 1px solid v.$color-border;
+  gap: v.$space-sm;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  padding: 0 v.$space-sm;
+  gap: 2px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.email {
+  color: v.$color-text-muted;
+  font-size: 12px;
+}
+
+.role {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 2px;
+  background: v.$color-primary-light;
+  color: v.$color-primary-dark;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.signOut {
+  padding: 8px v.$space-sm;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-sm;
+  background: none;
+  color: v.$color-text-muted;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: v.$color-critical;
+    color: v.$color-critical;
+  }
+}
+
+.main {
+  width: 100%;
+  max-width: v.$content-width;
+  flex: 1;
+  margin: 0 auto;
+  padding: v.$space-xl v.$space-lg;
+
+  @include m.mobile {
+    padding: v.$space-lg v.$space-md;
+  }
+}

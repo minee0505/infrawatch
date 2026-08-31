@@ -1,0 +1,38 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.loading {
+  padding: v.$space-xl 0;
+  color: v.$color-text-muted;
+  text-align: center;
+}
+
+.error {
+  @include m.card;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-md;
+  padding: v.$space-lg;
+  border-color: rgba(v.$color-critical, 0.3);
+  background: v.$color-critical-bg;
+  color: v.$color-critical;
+  text-align: center;
+}
+
+.retry {
+  @include m.button-base;
+
+  border-color: currentColor;
+  background: transparent;
+  color: inherit;
+}
+
+.empty {
+  @include m.card;
+
+  padding: v.$space-xl v.$space-lg;
+  color: v.$color-text-muted;
+  text-align: center;
+}

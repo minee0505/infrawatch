@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: infrawatch
+    runtime: docker
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: infrawatch-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: infrawatch-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: infrawatch-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: infrawatch-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: infrawatch-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SIMULATOR_ENABLED
+        value: "true"
+      - key: SIMULATOR_INTERVAL_MS
+        value: "20000"
+
+databases:
+  - name: infrawatch-db
+    plan: free
+    databaseName: infrawatch
+    user: infrawatch

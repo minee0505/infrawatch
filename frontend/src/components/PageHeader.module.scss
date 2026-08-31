@@ -1,0 +1,27 @@
+@use '../styles/variables' as v;
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: v.$space-lg;
+  gap: v.$space-md;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  margin-top: v.$space-xs;
+  color: v.$color-text-muted;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: v.$space-sm;
+}

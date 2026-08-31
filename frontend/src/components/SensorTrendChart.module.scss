@@ -1,0 +1,44 @@
+@use '../styles/variables' as v;
+
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.empty {
+  padding: v.$space-lg 0;
+  color: v.$color-text-muted;
+  font-size: 13px;
+  text-align: center;
+}
+
+.grid {
+  stroke: v.$color-border;
+  stroke-width: 1;
+}
+
+.axisLabel {
+  fill: v.$color-text-muted;
+  font-size: 11px;
+}
+
+.threshold {
+  stroke: v.$color-warning;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.line {
+  fill: none;
+  stroke: v.$color-primary;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dot {
+  fill: v.$color-primary;
+  stroke: v.$color-surface;
+  stroke-width: 2;
+}

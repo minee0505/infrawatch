@@ -1,0 +1,42 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  @include m.card;
+
+  width: 100%;
+  min-width: 480px;
+  overflow: hidden;
+  font-size: 14px;
+
+  th,
+  td {
+    padding: 12px v.$space-md;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid v.$color-border;
+    color: v.$color-text-muted;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  tbody tr + tr td {
+    border-top: 1px solid v.$color-border;
+  }
+}
+
+.select {
+  padding: 6px 10px;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-sm;
+  background: v.$color-surface;
+  color: v.$color-text;
+  font-family: inherit;
+  font-size: 14px;
+}

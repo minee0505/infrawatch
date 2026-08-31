@@ -1,0 +1,94 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.cards {
+  display: grid;
+  gap: v.$space-md;
+  grid-template-columns: repeat(5, 1fr);
+
+  @include m.mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  @include m.card;
+
+  display: flex;
+  flex-direction: column;
+  padding: v.$space-md;
+  gap: v.$space-xs;
+}
+
+.critical {
+  border-color: rgba(v.$color-critical, 0.3);
+  background: v.$color-critical-bg;
+}
+
+.cardLabel {
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.cardValue {
+  font-size: 26px;
+  font-weight: 700;
+
+  .critical & {
+    color: v.$color-critical;
+  }
+}
+
+.recent {
+  margin-top: v.$space-xl;
+}
+
+.sectionTitle {
+  margin-bottom: v.$space-md;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+}
+
+.item {
+  @include m.card;
+
+  display: flex;
+  align-items: center;
+  padding: v.$space-md;
+  color: inherit;
+  gap: v.$space-md;
+
+  &:hover {
+    border-color: v.$color-primary;
+    text-decoration: none;
+  }
+}
+
+.itemBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.itemMessage {
+  font-weight: 600;
+}
+
+.itemMeta {
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.itemDate {
+  flex-shrink: 0;
+  color: v.$color-text-muted;
+  font-size: 13px;
+}

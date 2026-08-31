@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: infrawatch-db
+    environment:
+      POSTGRES_DB: infrawatch
+      POSTGRES_USER: infrawatch
+      POSTGRES_PASSWORD: infrawatch
+      TZ: Asia/Seoul
+    ports:
+      - "${DB_PORT:-5434}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U infrawatch -d infrawatch"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .
+    container_name: infrawatch-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: infrawatch
+      DB_USERNAME: infrawatch
+      DB_PASSWORD: infrawatch
+      TZ: Asia/Seoul
+      JWT_SECRET: ${JWT_SECRET:-infrawatch-local-development-secret-key-change-me-in-production}
+      SIMULATOR_ENABLED: ${SIMULATOR_ENABLED:-true}
+      SIMULATOR_INTERVAL_MS: ${SIMULATOR_INTERVAL_MS:-20000}
+    ports:
+      - "${APP_PORT:-8082}:8080"
+
+volumes:
+  pgdata:

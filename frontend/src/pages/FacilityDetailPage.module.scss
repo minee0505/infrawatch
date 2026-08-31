@@ -1,0 +1,239 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.back {
+  margin-bottom: v.$space-md;
+  font-size: 14px;
+}
+
+.description {
+  margin-top: -#{v.$space-md};
+  margin-bottom: v.$space-lg;
+  color: v.$color-text-muted;
+  font-size: 14px;
+}
+
+.secondaryButton {
+  @include m.button-base;
+
+  padding: 8px 16px;
+  border-color: v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-text;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-primary;
+    color: v.$color-primary;
+  }
+}
+
+.dangerButton {
+  @include m.button-base;
+
+  padding: 8px 16px;
+  border-color: v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-critical;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-critical;
+    background: v.$color-critical-bg;
+  }
+}
+
+.sensors {
+  margin-top: v.$space-xl;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: v.$space-md;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.sensorList {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+}
+
+.sensorItem {
+  @include m.card;
+
+  overflow: hidden;
+}
+
+.sensorHead {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: v.$space-md;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  gap: v.$space-md;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background: v.$color-primary-light;
+  }
+}
+
+.sensorType {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: v.$color-primary-light;
+  color: v.$color-primary-dark;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sensorName {
+  flex: 1;
+  font-weight: 600;
+}
+
+.sensorValue {
+  color: v.$color-text-muted;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chevron {
+  color: v.$color-text-muted;
+  font-size: 11px;
+}
+
+.sensorBody {
+  padding: v.$space-md;
+  border-top: 1px solid v.$color-border;
+}
+
+.sensorMeta {
+  display: grid;
+  margin: 0 0 v.$space-md;
+  gap: v.$space-md;
+  grid-template-columns: repeat(3, 1fr);
+
+  dt {
+    color: v.$color-text-muted;
+    font-size: 12px;
+  }
+
+  dd {
+    margin: 2px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  @include m.mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sensorActions {
+  display: flex;
+  margin-bottom: v.$space-md;
+  gap: v.$space-sm;
+}
+
+.trendPanel {
+  padding-top: v.$space-md;
+  border-top: 1px solid v.$color-border;
+}
+
+.readingForm {
+  display: flex;
+  align-items: center;
+  margin-top: v.$space-md;
+  gap: v.$space-sm;
+
+  @include m.mobile {
+    flex-wrap: wrap;
+  }
+}
+
+.readingLabel {
+  color: v.$color-text-muted;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.readingInput {
+  @include m.form-input;
+
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.readingSubmit {
+  @include m.button-base;
+
+  padding: 8px 16px;
+  background: v.$color-primary;
+  color: #fff;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    background: v.$color-primary-dark;
+  }
+}
+
+// 등록/수정 폼 (Modal 안에서 사용)
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-md;
+}
+
+.field {
+  @include m.form-field;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input {
+  @include m.form-input;
+}
+
+.textarea {
+  @include m.form-input;
+
+  resize: vertical;
+}
+
+.thresholdRow {
+  display: flex;
+  gap: v.$space-md;
+
+  .field {
+    flex: 1;
+  }
+}
+
+.submit {
+  @include m.button-base;
+
+  background: v.$color-primary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: v.$color-primary-dark;
+  }
+}

@@ -1,0 +1,30 @@
+@use '../styles/variables' as v;
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ok {
+  background: v.$color-ok-bg;
+  color: v.$color-ok;
+}
+
+.warning {
+  background: v.$color-warning-bg;
+  color: v.$color-warning;
+}
+
+.critical {
+  background: v.$color-critical-bg;
+  color: v.$color-critical;
+}
+
+.inactive {
+  background: v.$color-inactive-bg;
+  color: v.$color-inactive;
+}

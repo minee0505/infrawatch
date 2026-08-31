@@ -1,0 +1,108 @@
+@use '../styles/variables' as v;
+@use '../styles/mixins' as m;
+
+.tabs {
+  display: flex;
+  margin-bottom: v.$space-md;
+  gap: v.$space-sm;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: 1px solid v.$color-border;
+  border-radius: 999px;
+  background: v.$color-surface;
+  color: v.$color-text-muted;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    border-color: v.$color-primary;
+    color: v.$color-primary;
+  }
+}
+
+.tabActive {
+  border-color: v.$color-primary;
+  background: v.$color-primary;
+  color: #fff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-md;
+}
+
+.item {
+  @include m.card;
+
+  padding: v.$space-lg;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: v.$space-sm;
+}
+
+.facility {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.createdAt {
+  margin-left: auto;
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.message {
+  margin-top: v.$space-sm;
+  font-size: 15px;
+}
+
+.resolvedInfo {
+  margin-top: v.$space-sm;
+  color: v.$color-text-muted;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: v.$space-md;
+  gap: v.$space-sm;
+}
+
+.acknowledge {
+  @include m.button-base;
+
+  padding: 8px 16px;
+  border-color: v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-text;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-warning;
+    color: v.$color-warning;
+  }
+}
+
+.resolve {
+  @include m.button-base;
+
+  padding: 8px 16px;
+  border-color: v.$color-border;
+  background: v.$color-surface;
+  color: v.$color-text;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    border-color: v.$color-ok;
+    color: v.$color-ok;
+  }
+}
